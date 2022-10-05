@@ -1,5 +1,6 @@
 import styles from './Footer.module.css';
 
+import Logo from '../../img/logo.png';
 import AmericanExpress from '../../img/payment_options/american_express.jpg';
 import ApplePay from '../../img/payment_options/apple_pay.png';
 import Mastercard from '../../img/payment_options/mastercard.png';
@@ -17,7 +18,7 @@ function Footer() {
     <footer className={styles.footer}>
       <div className={styles.contact_info_container}>
         <div className={styles.working_days}>
-          <h3>Our team is ready to help you!</h3>
+          <h3>Any questions? Contact us!</h3>
           <p>
             <span className={styles.footer_icon}>
               <FiClock />
@@ -73,6 +74,8 @@ function Footer() {
         <img src={PlayStore} alt="Download our app on Google Play Store" />
         <img src={AppleStore} alt="Download our app on App Store" />
       </div>
+
+      <img className={styles.footer_logo} src={Logo} alt="Nexus Store Logo" />
     </footer>
   );
 }

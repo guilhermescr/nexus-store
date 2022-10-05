@@ -1,8 +1,9 @@
 .footer {
-  background-color: #2d8053;
+  background-color: #02381a;
   display: flex;
   flex-direction: column;
   gap: 1.5em;
+  justify-content: center;
   min-height: 100vh;
   padding: 0.8em 1.3em;
   width: 100%;
@@ -26,33 +27,24 @@
   color: #fff;
 }
 
-.contact_info_container {
+.contact_info_container,
+.contact_info_container .contact_options,
+.payment_options {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5em;
 }
 
 .contact_info_container .working_days,
-.contact_info_container .contact_options {
-  width: 100%;
-}
-
-.contact_info_container .contact_options {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5em;
-}
-
-.contact_info_container .contact_options p {
+.contact_info_container .contact_options,
+.contact_info_container .contact_options p,
+.payment_options,
+.payment_option img {
   width: 100%;
 }
 
 .payment_options {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5em;
   justify-content: center;
-  width: 100%;
 }
 
 .payment_option {
@@ -63,10 +55,6 @@
   justify-content: center;
   padding: 0.5em;
   width: 30%;
-}
-
-.payment_option img {
-  width: 100%;
 }
 
 .newsletter_container input {
@@ -93,4 +81,10 @@
 .download_our_apps_container img {
   cursor: pointer;
   width: 48%;
+}
+
+.footer_logo {
+  align-self: center;
+  border-radius: 1em;
+  width: 90%;
 }
