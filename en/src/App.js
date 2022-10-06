@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Container from './components/layouts/Container';
 import Footer from './components/layouts/Footer';
 import Header from './components/layouts/Header';
 import AboutUs from './components/pages/AboutUs';
@@ -9,11 +10,13 @@ function App() {
   return (
     <Router>
       <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/products" element={<Products />} />
-        <Route path="/aboutus" element={<AboutUs />} />
-      </Routes>
+      <Container>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/products" element={<Products />} />
+          <Route path="/aboutus" element={<AboutUs />} />
+        </Routes>
+      </Container>
       <Footer />
     </Router>
   );

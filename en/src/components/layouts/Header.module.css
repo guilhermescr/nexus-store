@@ -1,17 +1,100 @@
 .header {
   align-items: center;
-  background-color: lightgreen;
+  background-color: #fff;
+  box-shadow: 0 0 0.3em #00000033;
   display: flex;
+  justify-content: space-between;
+  min-height: 10vh;
+  padding-inline: 1em;
+  position: relative;
+}
+
+.visible {
+  display: flex !important;
+}
+
+.header > a,
+.logo {
+  width: 80%;
+}
+
+.hamburger_menu_container,
+.navbar .close_menu_container {
+  cursor: pointer;
+  height: 5.7vh;
+  padding: 0.2em;
+  -webkit-tap-highlight-color: transparent;
+  width: 6.2vh;
+}
+
+.hamburger_menu_container {
+  display: flex;
+  flex-direction: column;
   justify-content: space-between;
 }
 
-.logo {
+.hamburger_menu_container:active {
+  background-color: #0000001a;
+}
+
+.hamburger_menu_container .hamburger_bar {
+  background-color: #000;
+  height: 3px;
   width: 100%;
 }
 
-.header ul {
+.navbar {
+  align-items: center;
+  background-color: #02381a;
+  display: none;
+  flex-direction: column;
+  gap: 5em;
+  height: 100vh;
+  justify-content: flex-start;
+  left: 0;
+  padding-block: 2em;
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  z-index: 1;
+}
+
+.navbar .close_menu_container {
+  position: absolute;
+  right: 5vw;
+  top: 6vh;
+}
+
+.navbar .close_menu_container .close_bar_axis {
+  background-color: #fff;
+  height: 0.2em;
+  position: absolute;
+  width: 1.9em;
+}
+
+.navbar .close_menu_container .close_bar_axis:nth-child(1) {
+  transform: rotate(45deg);
+}
+
+.navbar .close_menu_container .close_bar_axis:nth-child(2) {
+  transform: rotate(-45deg);
+}
+
+.navbar .list {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  width: 60%;
+  gap: 1em;
+  justify-content: space-between;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.navbar .list .item a {
+  color: #fff;
+  font-size: 1.4em;
+  text-decoration: none;
+}
+
+.navbar .list .item a:hover {
+  text-decoration: underline;
 }
