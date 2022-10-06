@@ -3,28 +3,47 @@
   background-color: #fff;
   box-shadow: 0 0 0.3em #00000033;
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: flex-end;
   min-height: 10vh;
-  padding-inline: 1em;
+  padding: 0.5em 1em;
   position: relative;
-}
-
-.visible {
-  display: flex !important;
 }
 
 .header > a,
 .logo {
-  width: 80%;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.header > a {
+  margin-block: 0.5em;
+  margin-right: auto;
+  width: 50%;
+}
+
+.logo {
+  width: 100%;
+}
+
+.shopping_cart_container {
+  height: 2.2em;
+  width: 4em;
+}
+
+.shopping_cart_container svg {
+  cursor: pointer;
+  height: 100%;
+  width: 100%;
 }
 
 .hamburger_menu_container,
 .navbar .close_menu_container {
   cursor: pointer;
-  height: 5.7vh;
+  height: 1.7em;
   padding: 0.2em;
   -webkit-tap-highlight-color: transparent;
-  width: 6.2vh;
+  width: 2.3em;
 }
 
 .hamburger_menu_container {
@@ -46,28 +65,33 @@
 .navbar {
   align-items: center;
   background-color: #02381a;
-  display: none;
+  display: flex;
   flex-direction: column;
   gap: 5em;
   height: 100vh;
   justify-content: flex-start;
-  left: 0;
+  left: 100%;
   padding-block: 2em;
-  position: absolute;
+  position: fixed;
+  transition: 0.2s ease-out;
   top: 0;
   width: 100vw;
   z-index: 1;
 }
 
+.navbar.visible {
+  left: 0;
+}
+
 .navbar .close_menu_container {
   position: absolute;
-  right: 5vw;
-  top: 6vh;
+  right: 4vw;
+  top: 5vh;
 }
 
 .navbar .close_menu_container .close_bar_axis {
   background-color: #fff;
-  height: 0.2em;
+  height: 0.25em;
   position: absolute;
   width: 1.9em;
 }
@@ -78,6 +102,10 @@
 
 .navbar .close_menu_container .close_bar_axis:nth-child(2) {
   transform: rotate(-45deg);
+}
+
+.navbar .logo {
+  width: 90%;
 }
 
 .navbar .list {
@@ -91,10 +119,29 @@
 
 .navbar .list .item a {
   color: #fff;
-  font-size: 1.4em;
+  font-size: 8vw;
   text-decoration: none;
 }
 
 .navbar .list .item a:hover {
   text-decoration: underline;
+}
+
+.search_container {
+  text-align: center;
+  width: 100%;
+}
+
+.search_container input {
+  border: none;
+  border-radius: 0.3em;
+  box-shadow: 0 0 0.3em #aaa;
+  padding: 0.6em 0.7em;
+  transition: 0.2s ease-in-out;
+  width: 80%;
+}
+
+.search_container input:focus {
+  box-shadow: 0 0 0.6em lightgreen;
+  padding: 0.8em 1em;
 }

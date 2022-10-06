@@ -5,22 +5,24 @@ import styles from './Header.module.css';
 import Logo from '../../img/logo.png';
 import LogoV2 from '../../img/logo_v2.png';
 
+import { AiOutlineShoppingCart } from 'react-icons/ai';
+
 function Header() {
   const [navbarMenuVisible, setNavbarMenuVisible] = useState(false);
 
   function toggleNavbarVisibility(navbarState) {
+    let navbar = document.querySelector('#navbar');
+
     if (!navbarMenuVisible) {
       // open menu
-      document.body.style.overflowY = 'hidden';
+      document.body.style.overflow = 'hidden';
 
-      document.querySelector(
-        '#navbar'
-      ).classList = `${styles.navbar} ${styles.visible}`;
+      navbar.classList = `${styles.navbar} ${styles.visible}`;
     } else {
       // close menu
-      document.body.style.overflowY = 'auto';
+      document.body.style.overflow = 'auto';
 
-      document.querySelector('#navbar').classList = `${styles.navbar}`;
+      navbar.classList = `${styles.navbar}`;
     }
     setNavbarMenuVisible(navbarState);
   }
@@ -30,6 +32,10 @@ function Header() {
       <Link to="/">
         <img className={styles.logo} src={LogoV2} alt="Nexus Store Logo" />
       </Link>
+
+      <div className={styles.shopping_cart_container}>
+        <AiOutlineShoppingCart />
+      </div>
 
       <div
         onClick={() => {
@@ -89,6 +95,15 @@ function Header() {
           </li>
         </ul>
       </nav>
+
+      <div className={styles.search_container}>
+        <input
+          type="search"
+          autoComplete="off"
+          placeholder="What are you looking for?"
+          spellCheck="false"
+        ></input>
+      </div>
     </header>
   );
 }

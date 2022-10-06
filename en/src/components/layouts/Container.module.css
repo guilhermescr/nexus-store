@@ -1,3 +1,7 @@
 .container {
   min-height: 90vh;
 }
+
+.container > div {
+  padding: 1em 1.5em;
+}
