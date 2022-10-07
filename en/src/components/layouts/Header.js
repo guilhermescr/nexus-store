@@ -5,10 +5,15 @@ import styles from './Header.module.css';
 import Logo from '../../img/logo.png';
 import LogoV2 from '../../img/logo_v2.png';
 
-import { AiOutlineShoppingCart } from 'react-icons/ai';
+import {
+  AiOutlineShoppingCart,
+  AiOutlineSearch,
+  AiOutlineClose
+} from 'react-icons/ai';
 
 function Header() {
   const [navbarMenuVisible, setNavbarMenuVisible] = useState(false);
+  const [searchBarIsEmpty, setSearchBarIsEmpty] = useState(true);
 
   function toggleNavbarVisibility(navbarState) {
     let navbar = document.querySelector('#navbar');
@@ -96,13 +101,29 @@ function Header() {
         </ul>
       </nav>
 
-      <div className={styles.search_container}>
+      <div id="searchContainer" className={styles.search_container}>
         <input
           type="search"
+          id="inputSearch"
           autoComplete="off"
           placeholder="What are you looking for?"
           spellCheck="false"
-        ></input>
+          onChange={event => {
+            setSearchBarIsEmpty(event.target.value.length === 0);
+          }}
+        />
+        <div className={styles.input_search_buttons}>
+          {searchBarIsEmpty ? (
+            <AiOutlineSearch />
+          ) : (
+            <AiOutlineClose
+              onClick={() => {
+                setSearchBarIsEmpty(true);
+                document.querySelector('#inputSearch').value = '';
+              }}
+            />
+          )}
+        </div>
       </div>
     </header>
   );
