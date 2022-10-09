@@ -13,7 +13,8 @@ import {
 
 function Header() {
   const [navbarMenuVisible, setNavbarMenuVisible] = useState(false);
-  const [searchBarIsEmpty, setSearchBarIsEmpty] = useState(true);
+  const [headerSearchBarIsEmpty, setHeaderSearchBarIsEmpty] = useState(true);
+  const [navbarSearchBarIsEmpty, setNavbarSearchBarIsEmpty] = useState(true);
 
   function toggleNavbarVisibility(navbarState) {
     let navbar = document.querySelector('#navbar');
@@ -32,6 +33,22 @@ function Header() {
     setNavbarMenuVisible(navbarState);
   }
 
+  document.body.onload = () => {
+    // this.previousElementSibling is the currentInput
+    document
+      .querySelector('#headerSearchButtons')
+      .addEventListener('click', function () {
+        setHeaderSearchBarIsEmpty(true);
+        this.previousElementSibling.value = '';
+      });
+    document
+      .querySelector('#navbarSearchButtons')
+      .addEventListener('click', function () {
+        setNavbarSearchBarIsEmpty(true);
+        this.previousElementSibling.value = '';
+      });
+  };
+
   return (
     <header id="header" className={styles.header}>
       <Link to="/">
@@ -39,7 +56,9 @@ function Header() {
       </Link>
 
       <div className={styles.shopping_cart_container}>
-        <AiOutlineShoppingCart />
+        <Link to="/cart">
+          <AiOutlineShoppingCart />
+        </Link>
       </div>
 
       <div
@@ -66,6 +85,21 @@ function Header() {
         </div>
 
         <img className={styles.logo} src={Logo} alt="Nexus Store Logo" />
+
+        <div className={styles.search_container}>
+          <input
+            type="search"
+            autoComplete="off"
+            placeholder="What are you looking for?"
+            spellCheck="false"
+            onChange={event => {
+              setNavbarSearchBarIsEmpty(event.target.value.length === 0);
+            }}
+          />
+          <div id="navbarSearchButtons" className={styles.input_search_buttons}>
+            {navbarSearchBarIsEmpty ? <AiOutlineSearch /> : <AiOutlineClose />}
+          </div>
+        </div>
 
         <ul className={styles.list}>
           <li className={styles.item}>
@@ -101,28 +135,18 @@ function Header() {
         </ul>
       </nav>
 
-      <div id="searchContainer" className={styles.search_container}>
+      <div className={styles.search_container}>
         <input
           type="search"
-          id="inputSearch"
           autoComplete="off"
           placeholder="What are you looking for?"
           spellCheck="false"
           onChange={event => {
-            setSearchBarIsEmpty(event.target.value.length === 0);
+            setHeaderSearchBarIsEmpty(event.target.value.length === 0);
           }}
         />
-        <div className={styles.input_search_buttons}>
-          {searchBarIsEmpty ? (
-            <AiOutlineSearch />
-          ) : (
-            <AiOutlineClose
-              onClick={() => {
-                setSearchBarIsEmpty(true);
-                document.querySelector('#inputSearch').value = '';
-              }}
-            />
-          )}
+        <div id="headerSearchButtons" className={styles.input_search_buttons}>
+          {headerSearchBarIsEmpty ? <AiOutlineSearch /> : <AiOutlineClose />}
         </div>
       </div>
     </header>

@@ -31,10 +31,14 @@
   width: 4em;
 }
 
-.shopping_cart_container svg {
-  cursor: pointer;
+.shopping_cart_container * {
+  color: #000;
   height: 100%;
   width: 100%;
+}
+
+.shopping_cart_container svg {
+  cursor: pointer;
 }
 
 .hamburger_menu_container,
@@ -67,11 +71,11 @@
   background-color: #02381a;
   display: flex;
   flex-direction: column;
-  gap: 5em;
+  gap: 2em;
   height: 100vh;
   justify-content: flex-start;
   left: 100%;
-  padding-block: 2em;
+  padding: 2em 0.5em;
   position: fixed;
   transition: 0.2s ease-out;
   top: 0;
@@ -132,7 +136,7 @@
   max-width: 18em;
   position: relative;
   text-align: center;
-  width: 100%;
+  width: 90%;
 }
 
 .search_container input {
@@ -156,14 +160,13 @@
   height: 90%;
   justify-content: center;
   position: absolute;
-  right: 2%;
+  right: 4%;
   -webkit-tap-highlight-color: transparent;
   top: 2%;
-  width: 1.9em;
-  z-index: 1;
+  width: max-content;
 }
 
 .search_container .input_search_buttons svg {
   cursor: pointer;
-  width: 100%;
+  width: max-content;
 }
