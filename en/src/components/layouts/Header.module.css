@@ -5,7 +5,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-end;
-  padding-inline: 1em;
+  /* padding-inline: 1em; */
   position: relative;
 }
 
@@ -16,8 +16,7 @@
 }
 
 .header > a {
-  margin-block: 0.5em;
-  margin-right: auto;
+  margin: 0.5em auto 0.5em 0.6em;
   width: 50%;
 }
 
@@ -53,6 +52,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  margin-right: 0.6em;
 }
 
 .hamburger_menu_container:active {
@@ -79,7 +79,7 @@
   transition: 0.2s ease-out;
   top: 0;
   width: 100vw;
-  z-index: 1;
+  z-index: 2;
 }
 
 .navbar.visible {
@@ -132,11 +132,9 @@
 
 .search_container {
   margin: 0 auto;
-  max-width: 18em;
-  padding-bottom: 1em;
   position: relative;
   text-align: center;
-  width: 90%;
+  width: 98%;
 }
 
 .search_container input {
@@ -157,13 +155,14 @@
   align-items: center;
   background-color: #fff;
   display: flex;
-  height: 60%;
+  height: 55%;
   justify-content: center;
   position: absolute;
   right: 5%;
-  -webkit-tap-highlight-color: transparent;
-  top: 2%;
+  top: 50%;
+  transform: translateY(-50%);
   width: max-content;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .search_container .input_search_buttons svg {
