@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="../../src/components/layouts/Carousel.module.css"
+    />
+    <title>My First Carousel</title>
+  </head>
+  <body>
+    <section class="carousel">
+      <button type="button" class="slide_arrow" id="slide-arrow-prev">
+        &#8249;
+      </button>
+      <button type="button" class="slide_arrow" id="slide-arrow-next">
+        &#8250;
+      </button>
+
+      <div class="container" id="carouselImg">
+        <img
+          src="../../src/img/carousel_images/ram_memory.webp"
+          alt="The Best Ram Memory for 3rd Generation AMD Ryzen CPUs"
+        />
+        <img
+          src="../../src/img/carousel_images/rtx_3080.jpg"
+          alt="The Ultimate GPU GeForce RTX 3080"
+        />
+        <img
+          src="../../src/img/carousel_images/ryzen7_5700g.webp"
+          alt="A box with CPU Ryzen 7 5700G"
+        />
+        <img
+          id="pc_and_laptop"
+          src="../../src/img/carousel_images/pc_and_laptop.jpg"
+          alt="3 laptops, a monitor and a pc cabinet with a blue background"
+        />
+      </div>
+    </section>
+
+    <script>
+      const CAROUSEL_CONTAINER = document.getElementById('carouselImg');
+      const CAROUSEL_IMAGES = document.querySelectorAll('#carouselImg img');
+      const PREV_BUTTON = document.getElementById('slide-arrow-prev');
+      const NEXT_BUTTON = document.getElementById('slide-arrow-next');
+      let currentImage = 0;
+      let imagePercentage;
+      let clickFired = false;
+
+      NEXT_BUTTON.addEventListener('click', () => {
+        /* 
+          When the next button listener is activated, the scroll listener is activated as well because I'm changing the scroll here.
+          So, clickFired state will prevent the scroll event from listening the scroll at the same time of next button listener.
+        */
+        clickFired = true;
+
+        if (clickFired) {
+          currentImage++;
+        }
+
+        if (currentImage === CAROUSEL_IMAGES.length) {
+          currentImage = 0;
+        }
+
+        // Scroll goes to another image
+        CAROUSEL_CONTAINER.scrollLeft =
+          CAROUSEL_IMAGES[0].clientWidth * currentImage;
+
+        setTimeout(() => {
+          clickFired = false;
+        }, 1500);
+      });
+
+      PREV_BUTTON.addEventListener('click', () => {
+        console.log(
+          currentImage,
+          CAROUSEL_IMAGES[0].clientWidth * currentImage
+        );
+        clickFired = true;
+
+        if (currentImage === 0) {
+          currentImage = CAROUSEL_IMAGES.length;
+        } else {
+          currentImage--;
+        }
+
+        if (currentImage === CAROUSEL_IMAGES.length) {
+          currentImage--;
+        }
+
+        CAROUSEL_CONTAINER.scrollLeft =
+          CAROUSEL_IMAGES[0].clientWidth * currentImage;
+      });
+
+      CAROUSEL_CONTAINER.addEventListener('scroll', function () {
+        if (clickFired) return;
+
+        // If scroll is the half of an image, the code below updates currentImage.
+        imagePercentage = (60 / 100) * CAROUSEL_IMAGES[0].clientWidth;
+
+        for (let index = 0; index < CAROUSEL_IMAGES.length; index++) {
+          if (
+            CAROUSEL_CONTAINER.scrollLeft <
+            CAROUSEL_IMAGES[0].clientWidth / 50
+          ) {
+            currentImage = 0;
+            return;
+          }
+
+          if (
+            CAROUSEL_CONTAINER.scrollLeft > imagePercentage * index &&
+            CAROUSEL_CONTAINER.scrollLeft <
+              CAROUSEL_IMAGES[0].clientWidth * index
+          ) {
+            imagePercentage = (60 / 100) * (CAROUSEL_IMAGES[0].clientWidth * 2);
+
+            currentImage = index;
+          }
+
+          console.log(`CONTAINER SCROLL: ${CAROUSEL_CONTAINER.scrollLeft}
+        IMAGE: ${CAROUSEL_IMAGES[0].clientWidth * (currentImage + 1)}
+        IMAGE PERCENTAGE: ${imagePercentage}
+        CURRENT IMAGE: ${currentImage}`);
+        }
+      });
+    </script>
+  </body>
+</html>

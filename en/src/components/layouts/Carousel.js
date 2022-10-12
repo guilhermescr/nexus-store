@@ -6,6 +6,7 @@ import Ryzen7_5700G from '../../img/carousel_images/ryzen7_5700g.webp';
 import PC_and_Laptop from '../../img/carousel_images/pc_and_laptop.jpg';
 
 function Carousel() {
+  /*
   setTimeout(() => {
     const CAROUSEL_CONTAINER = document.getElementById('carouselImg');
     const CAROUSEL_IMAGES = document.querySelectorAll('#carouselImg img');
@@ -16,6 +17,10 @@ function Carousel() {
     let clickFired = false;
 
     NEXT_BUTTON.addEventListener('click', () => {
+      /* when the next button listener is activated, the scroll listener is activated as well because I'm changing the scroll here.
+      So, clickFired state will prevent the scroll event from listening the scroll at the same time of next button listener.
+      */
+    /*
       clickFired = true;
 
       if (clickFired) {
@@ -26,6 +31,7 @@ function Carousel() {
         currentImage = 0;
       }
 
+      // scroll goes to another image
       CAROUSEL_CONTAINER.scrollLeft =
         CAROUSEL_IMAGES[0].clientWidth * currentImage;
 
@@ -55,6 +61,7 @@ function Carousel() {
     CAROUSEL_CONTAINER.addEventListener('scroll', function () {
       if (clickFired) return;
 
+      // If scroll is the half of an image, the code below updates currentImage.
       imagePercentage = (60 / 100) * CAROUSEL_IMAGES[0].clientWidth;
 
       for (let index = 0; index < CAROUSEL_IMAGES.length; index++) {
@@ -82,6 +89,7 @@ function Carousel() {
       }
     });
   }, 1000);
+  */
 
   return (
     <section className={styles.carousel}>
