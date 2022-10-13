@@ -10,28 +10,31 @@ import {
   AiOutlineSearch,
   AiOutlineClose
 } from 'react-icons/ai';
+import CloseMenu from './responsive/CloseMenu';
+import BurgerMenu from './responsive/BurgerMenu';
 
 function Header() {
-  const [navbarMenuVisible, setNavbarMenuVisible] = useState(false);
+  const [navbarMenuVisible, setNavbarMenuVisible] = useState(true);
   const [headerSearchBarIsEmpty, setHeaderSearchBarIsEmpty] = useState(true);
   const [navbarSearchBarIsEmpty, setNavbarSearchBarIsEmpty] = useState(true);
 
-  function toggleNavbarVisibility(navbarState) {
+  const openNavbar = () => {
     let navbar = document.querySelector('#navbar');
+    // open menu
+    document.body.style.overflow = 'hidden';
 
-    if (!navbarMenuVisible) {
-      // open menu
-      document.body.style.overflow = 'hidden';
+    navbar.classList = `${styles.navbar} ${styles.visible}`;
 
-      navbar.classList = `${styles.navbar} ${styles.visible}`;
-    } else {
-      // close menu
-      document.body.style.overflow = 'auto';
+    setNavbarMenuVisible(false);
+  };
 
-      navbar.classList = `${styles.navbar}`;
-    }
-    setNavbarMenuVisible(navbarState);
-  }
+  const closeNavbar = () => {
+    let navbar = document.querySelector('#navbar');
+    // close menu
+    document.body.style.overflow = 'auto';
+    navbar.classList = `${styles.navbar}`;
+    setNavbarMenuVisible(true);
+  };
 
   document.body.onload = () => {
     // this.previousElementSibling is the currentInput
@@ -61,28 +64,10 @@ function Header() {
         </Link>
       </div>
 
-      <div
-        onClick={() => {
-          toggleNavbarVisibility(true);
-        }}
-        role="button"
-        className={styles.hamburger_menu_container}
-      >
-        <div className={styles.hamburger_bar}></div>
-        <div className={styles.hamburger_bar}></div>
-        <div className={styles.hamburger_bar}></div>
-      </div>
+      <BurgerMenu openMenu={openNavbar} />
 
       <nav id="navbar" className={styles.navbar}>
-        <div
-          onClick={() => {
-            toggleNavbarVisibility(false);
-          }}
-          className={styles.close_menu_container}
-        >
-          <div className={styles.close_bar_axis}></div>
-          <div className={styles.close_bar_axis}></div>
-        </div>
+        <CloseMenu closeMenu={closeNavbar} />
 
         <img className={styles.logo} src={Logo} alt="Nexus Store Logo" />
 
@@ -103,32 +88,17 @@ function Header() {
 
         <ul className={styles.list}>
           <li className={styles.item}>
-            <Link
-              onClick={() => {
-                toggleNavbarVisibility(false);
-              }}
-              to="/"
-            >
+            <Link onClick={openNavbar} to="/">
               Home
             </Link>
           </li>
           <li className={styles.item}>
-            <Link
-              onClick={() => {
-                toggleNavbarVisibility(false);
-              }}
-              to="/products"
-            >
+            <Link onClick={openNavbar} to="/products">
               Products
             </Link>
           </li>
           <li className={styles.item}>
-            <Link
-              onClick={() => {
-                toggleNavbarVisibility(false);
-              }}
-              to="/aboutus"
-            >
+            <Link onClick={openNavbar} to="/aboutus">
               About Us
             </Link>
           </li>

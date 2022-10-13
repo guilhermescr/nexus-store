@@ -1,0 +1,25 @@
+.close_menu_container {
+  cursor: pointer;
+  height: 1.7em;
+  padding: 0.2em;
+  position: absolute;
+  right: 4vw;
+  top: 7vh;
+  width: 2.3em;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.close_menu_container .close_bar_axis {
+  background-color: #fff;
+  height: 0.25em;
+  position: absolute;
+  width: 1.9em;
+}
+
+.close_menu_container .close_bar_axis:nth-child(1) {
+  transform: rotate(45deg);
+}
+
+.close_menu_container .close_bar_axis:nth-child(2) {
+  transform: rotate(-45deg);
+}
