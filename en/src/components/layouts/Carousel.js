@@ -40,36 +40,6 @@ function Carousel() {
         {slides}
       </Swiper>
     </React.Fragment>
-    // <section className={styles.carousel}>
-    //   <button
-    //     type="button"
-    //     className={styles.slide_arrow}
-    //     id="slide-arrow-prev"
-    //   >
-    //     &#8249;
-    //   </button>
-    //   <button
-    //     type="button"
-    //     className={styles.slide_arrow}
-    //     id="slide-arrow-next"
-    //   >
-    //     &#8250;
-    //   </button>
-
-    //   <div className={styles.container} id="carouselImg">
-    //     <img
-    //       src={RamMemory}
-    //       alt="The Best Ram Memory for 3rd Generation AMD Ryzen CPUs"
-    //     />
-    //     <img src={RTX_3080} alt="The Ultimate GPU GeForce RTX 3080" />
-    //     <img src={Ryzen7_5700G} alt="A box with CPU Ryzen 7 5700G" />
-    //     <img
-    //       id={styles.pc_and_laptop}
-    //       src={PC_and_Laptop}
-    //       alt="3 laptops, a monitor and a pc cabinet with a blue background"
-    //     />
-    //   </div>
-    // </section>
   );
 }
 
