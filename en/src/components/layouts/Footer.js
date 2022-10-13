@@ -40,7 +40,7 @@ function Footer() {
         </div>
       </div>
 
-      <section className={styles.payment_options_container}>
+      <div className={styles.payment_options_container}>
         <h3>Payment</h3>
         <ul className={styles.payment_options}>
           <li key="1" className={styles.payment_option}>
@@ -62,7 +62,7 @@ function Footer() {
             <img src={Visa} alt="Visa Payment Option" />
           </li>
         </ul>
-      </section>
+      </div>
 
       <div className={styles.newsletter_container}>
         <h3>Newsletter</h3>

@@ -75,6 +75,7 @@
   display: flex;
   gap: 0.5em;
   justify-content: center;
+  margin: 0 auto;
   width: 100%;
 }
 
@@ -87,4 +88,46 @@
   align-self: center;
   border-radius: 1em;
   width: 90%;
+}
+
+@media (min-width: 450px) {
+  .payment_option {
+    width: 8em;
+  }
+
+  .download_our_apps_container {
+    width: 20em;
+  }
+
+  .download_our_apps_container img {
+    width: 100%;
+  }
+
+  .footer_logo {
+    width: 20em;
+  }
+}
+
+@media (min-width: 768px) {
+  .footer {
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    min-height: 15.25em;
+  }
+
+  .contact_info_container,
+  .payment_options_container {
+    width: 40%;
+  }
+
+  .newsletter_container, .download_our_apps_container {
+    margin: auto;
+    max-width: 30em;
+    width: 100%;
+  }
+
+  /* .footer * {
+    max-width: 38em;
+  } */
 }
