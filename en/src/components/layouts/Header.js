@@ -88,17 +88,17 @@ function Header() {
 
         <ul className={styles.list}>
           <li className={styles.item}>
-            <Link onClick={openNavbar} to="/">
+            <Link onClick={closeNavbar} to="/">
               Home
             </Link>
           </li>
           <li className={styles.item}>
-            <Link onClick={openNavbar} to="/products">
+            <Link onClick={closeNavbar} to="/products">
               Products
             </Link>
           </li>
           <li className={styles.item}>
-            <Link onClick={openNavbar} to="/aboutus">
+            <Link onClick={closeNavbar} to="/aboutus">
               About Us
             </Link>
           </li>
