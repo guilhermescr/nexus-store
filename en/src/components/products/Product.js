@@ -2,30 +2,41 @@ import styles from './Product.module.css';
 
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 
-import ImageTest from '../../img/what_we_recommend_computers/ryzen_kit1.png';
-
-function Product() {
+function Product({
+  name,
+  old_price,
+  inCash_price,
+  discount,
+  creditCard_price,
+  creditCard_installment,
+  creditCard_installment_price,
+  creditCard_fees,
+  imgSrc,
+  imgAltText
+}) {
   return (
     <div className={styles.product}>
       <div className={styles.product_image_container}>
         <img
+          onLoad={() => {
+            document.querySelectorAll('img').forEach(img => {
+              URL.revokeObjectURL(img.src);
+            });
+          }}
           className={styles.product_image}
-          src={ImageTest}
-          alt="Image testing"
+          src={imgSrc}
+          alt={imgAltText}
         />
       </div>
       <div className={styles.product_info}>
-        <h3>
-          PC Gamer - Ryzen 5 5600G, B450M Aorus Gigabyte, x2 8GB RAM Memory, RGB
-          Cabinet with one fan
-        </h3>
+        <h3>{name}</h3>
         <p className={`${styles.product_old_price} ${styles.red_price}`}>
-          from <span className={styles.obsolete_price}>R$ 2455.49</span> to:
+          from <span className={styles.obsolete_price}>R$ {old_price}</span> to:
         </p>
         <p className={styles.product_incash}>
-          in cash <span className={styles.incash_price}>R$2210.99</span>
+          in cash <span className={styles.incash_price}>R${inCash_price}</span>
         </p>
-        <p className={styles.product_discount}>with a 15% discount</p>
+        <p className={styles.product_discount}>with a {discount}% discount</p>
 
         <span className={styles.horizontal_row}></span>
 
@@ -33,15 +44,19 @@ function Product() {
           <span
             className={`${styles.product_credit_card_price} ${styles.red_price}`}
           >
-            R$ 2350.99
+            R$ {creditCard_price}
           </span>
 
           <span className={styles.product_credit_card_installment}>
-            until 10x of{' '}
+            until {creditCard_installment}x of{' '}
             <span className={`${styles.installment_price} ${styles.red_price}`}>
-              235.22
+              {creditCard_installment_price}
             </span>
-            <strong>without fees on credit card</strong>
+            <strong>
+              {creditCard_fees === 0
+                ? 'without fees on credit card'
+                : `with ${creditCard_fees} on credit card`}
+            </strong>
           </span>
         </p>
       </div>

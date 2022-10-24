@@ -1,5 +1,5 @@
 import Carousel from '../layouts/Carousel';
-import Product from '../products/Product';
+import ProductsData from '../products/ProductsData';
 import styles from './Home.module.css';
 
 function Home() {
@@ -12,10 +12,7 @@ function Home() {
         <h2>What we recommend</h2>
 
         <div className={styles.recommended_products}>
-          <Product />
-          <Product />
-          <Product />
-          <Product />
+          <ProductsData />
         </div>
       </section>
     </div>

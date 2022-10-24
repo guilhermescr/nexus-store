@@ -10,7 +10,8 @@ function Input({ type, text, name, placeholder, handleOnChange }) {
         id={name}
         placeholder={placeholder}
         onChange={handleOnChange}
-        accept={name === 'productImage' ? 'image/*' : ''}
+        accept="image/*"
+        autoComplete="off"
       />
     </div>
   );

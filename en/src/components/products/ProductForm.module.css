@@ -1,20 +1,19 @@
-.btn {
+.form {
+  max-width: 600px;
+  width: 100%;
+}
+
+#submit_button {
   align-items: center;
   background-color: #000;
   border: none;
   color: #77ffab;
   display: flex;
   gap: 5px;
-  margin-left: auto;
-  padding: 7px 10px;
+  padding: 10px 15px;
   width: max-content;
 }
 
-.btn:active {
+#submit_button:active {
   background-color: #333;
-}
-
-.btn svg {
-  width: 19px;
-  height: 19px;
 }

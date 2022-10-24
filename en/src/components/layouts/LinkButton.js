@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 
 import styles from './LinkButton.module.css';
 
-function LinkButton({ to, text }) {
+function LinkButton({ to, text, onSubmit }) {
   return (
-    <Link className={styles.btn} to={to}>
+    <Link onClick={onSubmit} className={styles.btn} to={to}>
       {text} {text.includes("Add") && (
         <AiOutlinePlus />
       )}
