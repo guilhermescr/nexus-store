@@ -10,53 +10,58 @@ function ProductForm({ handleOnSubmit }) {
   const [product, setProduct] = useState({});
 
   function handleChange(event) {
-    setProduct({ ...product, [event.target.name]: event.target.value });
-
     if (event.target.name === 'imgSrc') {
-      product.imgSrc = URL.createObjectURL(event.target.files[0]);
-      // const [file] = event.target.files;
-      // product.imgSrc = URL.createObjectURL(file);
+      let img = event.target.files[0];
+      img = URL.createObjectURL(img);
+
+      setProduct({ ...product, [event.target.name]: img });
+    } else {
+      setProduct({ ...product, [event.target.name]: event.target.value });
     }
   }
 
   return (
-    <form className={styles.form}>
+    <form
+      id="addProductForm"
+      className={styles.form}
+      onSubmit={event => handleOnSubmit(product, event)}
+    >
       <Input
         type="text"
-        text="Name"
-        name="name"
+        text="Product Name"
+        name="productName"
         placeholder="Insert a name..."
         handleOnChange={handleChange}
       />
       <Textarea
         name="description"
-        text="Description"
+        text="Description (Optional)"
         placeholder="Insert a description..."
         handleOnChange={handleChange}
       />
       <Input
-        type="text"
+        type="number"
         text="Old Price"
         name="old_price"
         placeholder="R$0.00"
         handleOnChange={handleChange}
       />
       <Input
-        type="text"
+        type="number"
         text="In Cash Price"
         name="inCash_price"
         placeholder="R$0.00"
         handleOnChange={handleChange}
       />
       <Input
-        type="text"
+        type="number"
         text="Discount"
         name="discount"
         placeholder="0%"
         handleOnChange={handleChange}
       />
       <Input
-        type="text"
+        type="number"
         text="Credit Card Price"
         name="creditCard_price"
         placeholder="R$0.00"
@@ -97,11 +102,9 @@ function ProductForm({ handleOnSubmit }) {
         placeholder="Ex.: A motherboard with RGB"
         handleOnChange={handleChange}
       />
-      <LinkButton
-        to="/products"
-        text="Add Product"
-        onSubmit={() => handleOnSubmit(product)}
-      ></LinkButton>
+      <button id={styles.submit_button} type="submit">
+        Add Product
+      </button>
     </form>
   );
 }

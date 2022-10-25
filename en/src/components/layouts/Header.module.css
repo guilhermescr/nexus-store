@@ -125,7 +125,22 @@
 
 @media (min-width: 760px) {
   .header > a {
-    width: 20em;
+    width: 240px;
+  }
+
+  .navbar .logo {
+    width: 400px;
+  }
+
+  .navbar .list .item a {
+    color: #fff;
+    font-size: 40px;
+    text-decoration: none;
+  }
+
+  .navbar .search_container {
+    max-width: 500px;
+    width: 100%;
   }
 
   .search_container .input_search_buttons {

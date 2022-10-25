@@ -19,3 +19,8 @@ h2 {
     justify-content: center;
   }
 }
+
+@media (min-width: 720px) {
+  .recommended_products {
+  }
+}

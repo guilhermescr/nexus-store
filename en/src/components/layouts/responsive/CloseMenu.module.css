@@ -4,7 +4,7 @@
   padding: 0.2em;
   position: absolute;
   right: 4vw;
-  top: 6vh;
+  top: 7.5vh;
   width: 2.3em;
   -webkit-tap-highlight-color: transparent;
 }
@@ -22,4 +22,10 @@
 
 .close_menu_container .close_bar_axis:nth-child(2) {
   transform: rotate(-45deg);
+}
+
+@media (min-width: 720px) {
+  .close_menu_container {
+    right: 2vw;
+  }
 }

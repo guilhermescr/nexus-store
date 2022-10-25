@@ -1,0 +1,19 @@
+.products_container {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 20px;
+}
+
+
+@media (min-width: 520px) {
+  .products_container {
+    flex-flow: row wrap;
+    justify-content: center;
+  }
+}
+
+@media (min-width: 838px) {
+  .products_container {
+    justify-content: flex-start;
+  }
+}

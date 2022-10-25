@@ -8,6 +8,7 @@
   background-color: #000;
   border: none;
   color: #77ffab;
+  cursor: pointer;
   display: flex;
   gap: 5px;
   padding: 10px 15px;

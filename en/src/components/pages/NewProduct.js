@@ -6,11 +6,15 @@ import ProductForm from '../products/ProductForm';
 import { productsDB } from '../products/productsDB';
 
 function NewProduct() {
-  function handleSubmit(product) {
+  function handleSubmit(product, event) {
+    event.preventDefault();
+
     product.id = uuidv4();
     console.log(product);
 
     productsDB.push(product);
+
+    localStorage.setItem('productsDB', JSON.stringify(productsDB));
   }
 
   return (

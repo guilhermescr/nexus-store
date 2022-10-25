@@ -3,12 +3,10 @@ import { Link } from 'react-router-dom';
 
 import styles from './LinkButton.module.css';
 
-function LinkButton({ to, text, onSubmit }) {
+function LinkButton({ to, text }) {
   return (
-    <Link onClick={onSubmit} className={styles.btn} to={to}>
-      {text} {text.includes("Add") && (
-        <AiOutlinePlus />
-      )}
+    <Link className={styles.btn} to={to}>
+      {text} {text.includes('Add') && <AiOutlinePlus />}
     </Link>
   );
 }

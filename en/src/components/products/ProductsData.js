@@ -1,9 +1,11 @@
+import styles from './ProductsData.module.css';
+
 import { productsDB } from './productsDB';
 import Product from './Product';
 
 function ProductsData() {
   return (
-    <>
+    <div className={styles.products_container}>
       {productsDB.length === 0 && (
         <>There's no products in our stock, come back later.</>
       )}
@@ -11,7 +13,7 @@ function ProductsData() {
       {productsDB.length > 0 &&
         productsDB.map(product => (
           <Product
-            name={product.name}
+            productName={product.productName}
             old_price={product.old_price}
             inCash_price={product.inCash_price}
             discount={product.discount}
@@ -24,7 +26,7 @@ function ProductsData() {
             key={product.id}
           />
         ))}
-    </>
+    </div>
   );
 }
 
