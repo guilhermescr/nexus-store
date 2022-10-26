@@ -1,17 +1,16 @@
 import styles from './ProductsData.module.css';
 
-import { productsDB } from './productsDB';
 import Product from './Product';
 
-function ProductsData() {
+function ProductsData({ products }) {
   return (
     <div className={styles.products_container}>
-      {productsDB.length === 0 && (
+      {products.length === 0 && (
         <>There's no products in our stock, come back later.</>
       )}
 
-      {productsDB.length > 0 &&
-        productsDB.map(product => (
+      {products.length > 0 &&
+        products.map(product => (
           <Product
             productName={product.productName}
             old_price={product.old_price}

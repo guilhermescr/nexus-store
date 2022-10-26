@@ -2,7 +2,7 @@ import Carousel from '../layouts/Carousel';
 import ProductsData from '../products/ProductsData';
 import styles from './Home.module.css';
 
-function Home() {
+function Home({ productsState }) {
   return (
     <div>
       <h1>Welcome to the Nexus Store!</h1>
@@ -12,7 +12,7 @@ function Home() {
         <h2>What we recommend</h2>
 
         <div className={styles.recommended_products}>
-          <ProductsData />
+          <ProductsData products={productsState} />
         </div>
       </section>
     </div>

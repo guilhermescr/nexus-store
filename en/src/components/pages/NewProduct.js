@@ -3,18 +3,15 @@ import { v4 as uuidv4 } from 'uuid';
 import styles from './NewProduct.module.css';
 
 import ProductForm from '../products/ProductForm';
-import { productsDB } from '../products/productsDB';
 
-function NewProduct() {
+function NewProduct({ setProducts, products }) {
   function handleSubmit(product, event) {
     event.preventDefault();
 
     product.id = uuidv4();
     console.log(product);
 
-    productsDB.push(product);
-
-    localStorage.setItem('productsDB', JSON.stringify(productsDB));
+    setProducts([...products, product]);
   }
 
   return (
