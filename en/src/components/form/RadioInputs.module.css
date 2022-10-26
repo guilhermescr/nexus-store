@@ -1,0 +1,44 @@
+.form_radio_inputs_container {
+  display: flex;
+  flex-direction: column;
+}
+
+.form_radio_inputs_container #main_label {
+  font-weight: bold;
+  margin-bottom: 0.6em;
+  width: 100%;
+}
+
+.radio_inputs {
+  align-items: center;
+  display: flex;
+  gap: 10px;
+  margin-bottom: 1em;
+}
+
+.radio_input_container {
+  align-items: center;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  width: max-content;
+}
+
+.radio_input_container input {
+  width: max-content;
+}
+
+.radio_input_container input:focus {
+  transition: transform 0.1s ease-out;
+  transform: scale(1.01);
+  outline: 1px solid #444;
+}
+
+.radio_input_container input::placeholder {
+  color: #7b7b7b;
+}
+
+.radio_input_container input,
+.radio_input_container label {
+  cursor: pointer;
+}

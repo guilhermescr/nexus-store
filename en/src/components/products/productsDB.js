@@ -21,8 +21,8 @@ let productsDB = [
   }
 ];
 
-function updateDatabase(updatedDatabase) {
-  productsDB = updatedDatabase;
+function updateDatabase(data) {
+  productsDB = data;
 }
 
 export { productsDB, updateDatabase };

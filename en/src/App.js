@@ -1,23 +1,26 @@
 import { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
 import Cart from './components/cart/Cart';
 import Container from './components/layouts/Container';
-import Footer from './components/layouts/Footer';
 import Header from './components/layouts/Header';
-import AboutUs from './components/pages/AboutUs';
+import Footer from './components/layouts/Footer';
 import Home from './components/pages/Home';
 import NewProduct from './components/pages/NewProduct';
 import Products from './components/pages/Products';
-import { productsDB, updateDatabase } from './components/products/productsDB';
+import AboutUs from './components/pages/AboutUs';
+import { updateDatabase } from './components/products/productsDB';
 
 function App() {
+  
   useEffect(() => {
-    if (productsDB.length > 0) {
-      localStorage.setItem('productsDB', JSON.stringify(productsDB));
-    }
+    let data = JSON.parse(localStorage.getItem('productsDB'));
 
-    updateDatabase(JSON.parse(localStorage.getItem('productsDB')));
-  }, [productsDB]);
+    if (!(data === null)) {
+      updateDatabase(data);
+    }
+  }, []);
+  
 
   return (
     <Router>
