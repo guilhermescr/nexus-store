@@ -23,12 +23,12 @@ function Product({
         <h3>{productName}</h3>
         {old_price && (
           <p className={`${styles.product_old_price} ${styles.red_price}`}>
-            from <span className={styles.obsolete_price}>R$ {old_price}</span>{' '}
+            from <span className={styles.obsolete_price}>${old_price}</span>{' '}
             to:
           </p>
         )}
         <p className={styles.product_incash}>
-          in cash <span className={styles.incash_price}>R${inCash_price}</span>
+          in cash <span className={styles.incash_price}>${inCash_price}</span>
         </p>
         {discount && (
           <p className={styles.product_discount}>with a {discount}% discount</p>
@@ -41,7 +41,7 @@ function Product({
             <span
               className={`${styles.product_credit_card_price} ${styles.red_price}`}
             >
-              R$ {creditCard_price}
+              ${creditCard_price}
             </span>
 
             <span className={styles.product_credit_card_installment}>
