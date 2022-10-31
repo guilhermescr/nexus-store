@@ -43,7 +43,7 @@ function App() {
   }, [setProducts]);
 
   useEffect(() => {
-    console.log(products);
+    // console.log(products);
     if (products.length > 1) {
       localStorage.setItem('products', JSON.stringify(products));
     }

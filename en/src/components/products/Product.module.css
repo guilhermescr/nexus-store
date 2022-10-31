@@ -5,7 +5,27 @@
   gap: 0.5em;
   height: max-content;
   justify-content: center;
+  position: relative;
   width: 100%;
+}
+
+.product .edit_product_container {
+  cursor: pointer;
+  height: 1.3em;
+  left: 4%;
+  position: absolute;
+  top: 2%;
+  width: 1.3em;
+}
+
+.edit_product_container svg {
+  height: 100%;
+  width: 100%;
+}
+
+.edit_product_container svg path {
+  fill: #fff;
+  stroke: #1d3b28;
 }
 
 .red_price {

@@ -3,6 +3,8 @@ import styles from './RadioInputs.module.css';
 
 import Input from '../form/Input';
 
+export let setImageTypeState;
+
 function RadioInputs({ name, text, inputAmount, values, handleOnChange }) {
   const [imageType, setImageType] = useState('Image File');
 
@@ -33,8 +35,14 @@ function RadioInputs({ name, text, inputAmount, values, handleOnChange }) {
 
   function changeImageType({ target }) {
     // target is the clicked input radio
-    setImageType(target.value);
+    if (target.value) {
+      setImageType(target.value);
+    } else {
+      setImageType(target);
+    }
+    
   }
+  setImageTypeState = changeImageType;
 
   return (
     <div className={styles.form_radio_inputs_container}>
@@ -49,6 +57,7 @@ function RadioInputs({ name, text, inputAmount, values, handleOnChange }) {
           <Input
             type="file"
             text="Select an image"
+            id="imgSrc"
             name="imgFile"
             placeholder=""
             handleOnChange={handleOnChange}
@@ -57,6 +66,7 @@ function RadioInputs({ name, text, inputAmount, values, handleOnChange }) {
           <Input
             type="text"
             text="Link"
+            id="imgSrc"
             name="imgLink"
             placeholder="Insert an image link here..."
             handleOnChange={handleOnChange}

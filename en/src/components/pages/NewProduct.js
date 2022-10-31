@@ -1,10 +1,10 @@
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 
 import styles from './NewProduct.module.css';
 
 import ProductForm from '../products/ProductForm';
-import { useState } from 'react';
 import Message from '../layouts/Message';
 
 function NewProduct({ setProducts, products }) {
@@ -16,13 +16,19 @@ function NewProduct({ setProducts, products }) {
     event.preventDefault();
     setMessage('');
 
-    product.id = uuidv4();
-    console.log(product);
-    setProducts([...products, product]);
+    if (
+      document.querySelector('form#addProductForm button').innerHTML ===
+      'Save Product'
+    ) {
+      setProducts([...products, product]);
+    } else {
+      product.id = uuidv4();
+      console.log(product);
+      setProducts([...products, product]);
 
-    setMessage('Product successfully added!');
-    setType('success');
-
+      setMessage('Product successfully added!');
+      setType('success');
+    }
     navigate('/products');
   }
 

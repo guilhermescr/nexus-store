@@ -1,6 +1,7 @@
 import styles from './Product.module.css';
 
 import { AiOutlineShoppingCart } from 'react-icons/ai';
+import { GrEdit } from 'react-icons/gr';
 
 function Product({
   productName,
@@ -12,10 +13,19 @@ function Product({
   creditCard_installment_price,
   creditCard_fees,
   imgSrc,
-  imgAltText
+  imgAltText,
+  id,
+  editProduct
 }) {
   return (
-    <div className={styles.product}>
+    <div className={styles.product} id={id}>
+      <div
+        className={styles.edit_product_container}
+        onClick={event => editProduct(event)}
+      >
+        <GrEdit />
+      </div>
+
       <div className={styles.product_image_container}>
         <img className={styles.product_image} src={imgSrc} alt={imgAltText} />
       </div>
@@ -23,8 +33,7 @@ function Product({
         <h3>{productName}</h3>
         {old_price && (
           <p className={`${styles.product_old_price} ${styles.red_price}`}>
-            from <span className={styles.obsolete_price}>${old_price}</span>{' '}
-            to:
+            from <span className={styles.obsolete_price}>${old_price}</span> to:
           </p>
         )}
         <p className={styles.product_incash}>
