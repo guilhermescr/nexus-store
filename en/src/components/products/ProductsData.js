@@ -9,10 +9,11 @@ function ProductsData({ products }) {
 
   function editProduct(event) {
     let productContainer = event.currentTarget.parentElement;
-    navigate('/newproduct');
 
     for (let product of products) {
       if (product.id === productContainer.id) {
+        navigate(`/newproduct?id=${product.id}`);
+
         setTimeout(() => {
           const inputs = document.querySelectorAll('form#addProductForm input');
           document.querySelector('form#addProductForm button').innerHTML =
@@ -34,8 +35,18 @@ function ProductsData({ products }) {
                   product[productInfo].includes('gif') ||
                   product[productInfo].includes('avif'))
               ) {
-                console.log('Image:', product[productInfo]);
                 setImageTypeState({ target: 'Image Link' });
+
+                // radio input
+                document.getElementById('Image Link').click();
+
+                // image link input
+                document.getElementById('imgLink').value = product.imgSrc;
+              }
+
+              if (document.querySelector('#description')) {
+                document.querySelector('#description').value =
+                  product.description;
               }
             });
           });
@@ -63,7 +74,7 @@ function ProductsData({ products }) {
             creditCard_fees={product.creditCard_fees}
             imgSrc={product.imgSrc}
             imgAltText={product.imgAltText}
-            key={product.id}
+            key={product.id ? product.id : Math.random() * 10000}
             id={product.id}
             editProduct={editProduct}
           />

@@ -40,7 +40,6 @@ function RadioInputs({ name, text, inputAmount, values, handleOnChange }) {
     } else {
       setImageType(target);
     }
-    
   }
   setImageTypeState = changeImageType;
 

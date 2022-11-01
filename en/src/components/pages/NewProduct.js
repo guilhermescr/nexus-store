@@ -20,7 +20,11 @@ function NewProduct({ setProducts, products }) {
       document.querySelector('form#addProductForm button').innerHTML ===
       'Save Product'
     ) {
-      setProducts([...products, product]);
+      const changedProduct = products.find(
+        $product => $product.id === window.location.search
+      );
+      setProducts([...products, changedProduct]);
+      console.log(product, changedProduct);
     } else {
       product.id = uuidv4();
       console.log(product);
