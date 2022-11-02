@@ -1,13 +1,20 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import styles from './ProductForm.module.css';
 
 import Input from '../form/Input';
 import Textarea from '../form/Textarea';
 import RadioInputs from '../form/RadioInputs';
+import { currentProduct } from './ProductsData';
 
 function ProductForm({ handleOnSubmit }) {
   const [product, setProduct] = useState({});
+
+  useEffect(() => {
+    if (window.location.search.includes('id')) {
+      setProduct(currentProduct);
+    }
+  }, [setProduct]);
 
   function handleChange({ target }) {
     if (target.name === 'imgLink') {

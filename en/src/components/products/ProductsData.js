@@ -4,54 +4,58 @@ import styles from './ProductsData.module.css';
 import Product from './Product';
 import { setImageTypeState } from '../form/RadioInputs';
 
+export let currentProduct;
+
 function ProductsData({ products }) {
   const navigate = useNavigate();
 
   function editProduct(event) {
     let productContainer = event.currentTarget.parentElement;
 
-    for (let product of products) {
-      if (product.id === productContainer.id) {
-        navigate(`/newproduct?id=${product.id}`);
+    currentProduct = products.find(
+      $product => $product.id === productContainer.id
+    );
 
-        setTimeout(() => {
-          const inputs = document.querySelectorAll('form#addProductForm input');
-          document.querySelector('form#addProductForm button').innerHTML =
-            'Save Product';
+    if (currentProduct) {
+      navigate(`/newproduct?id=${currentProduct.id}`);
 
-          Object.keys(product).forEach(productInfo => {
-            inputs.forEach(input => {
-              if (productInfo === input.id) {
-                input.value = product[productInfo];
-              }
+      setTimeout(() => {
+        const inputs = document.querySelectorAll('form#addProductForm input');
+        document.querySelector('form#addProductForm button').innerHTML =
+          'Save Product';
 
-              if (
-                productInfo === 'imgSrc' &&
-                (product[productInfo].includes('http') ||
-                  product[productInfo].includes('jpg') ||
-                  product[productInfo].includes('jpeg') ||
-                  product[productInfo].includes('png') ||
-                  product[productInfo].includes('webp') ||
-                  product[productInfo].includes('gif') ||
-                  product[productInfo].includes('avif'))
-              ) {
-                setImageTypeState({ target: 'Image Link' });
+        Object.keys(currentProduct).forEach(productInfo => {
+          inputs.forEach(input => {
+            if (productInfo === input.id) {
+              input.value = currentProduct[productInfo];
+            }
 
-                // radio input
-                document.getElementById('Image Link').click();
+            if (
+              productInfo === 'imgSrc' &&
+              (currentProduct[productInfo].includes('http') ||
+              currentProduct[productInfo].includes('jpg') ||
+              currentProduct[productInfo].includes('jpeg') ||
+              currentProduct[productInfo].includes('png') ||
+              currentProduct[productInfo].includes('webp') ||
+              currentProduct[productInfo].includes('gif') ||
+              currentProduct[productInfo].includes('avif'))
+            ) {
+              setImageTypeState({ target: 'Image Link' });
 
-                // image link input
-                document.getElementById('imgLink').value = product.imgSrc;
-              }
+              // radio input
+              document.getElementById('Image Link').click();
 
-              if (document.querySelector('#description')) {
-                document.querySelector('#description').value =
-                  product.description;
-              }
-            });
+              // image link input
+              document.getElementById('imgLink').value = currentProduct.imgSrc;
+            }
+
+            if (document.querySelector('#description')) {
+              document.querySelector('#description').value =
+              currentProduct.description;
+            }
           });
-        }, 150);
-      }
+        });
+      }, 150);
     }
   }
 
