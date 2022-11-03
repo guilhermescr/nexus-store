@@ -9,23 +9,29 @@
   width: 100%;
 }
 
-.product .edit_product_container {
+.product .product_settings {
   cursor: pointer;
-  height: 1.3em;
+  display: flex;
+  gap: 0.5em;
+  height: 2.5em;
   left: 4%;
   position: absolute;
-  top: 2%;
-  width: 1.3em;
+  top: 1%;
+  width: 3.2em;
 }
 
-.edit_product_container svg {
+.product_settings svg {
   height: 100%;
   width: 100%;
 }
 
-.edit_product_container svg path {
+.product_settings svg path {
   fill: #fff;
   stroke: #1d3b28;
+}
+
+.product_settings svg:hover path {
+  fill: #ffffffc7;
 }
 
 .red_price {
@@ -42,7 +48,8 @@
   width: 100%;
 }
 
-.product_image_container:hover {
+.product_image_container:hover,
+.product_settings:hover + .product_image_container {
   background-color: #000;
   padding: 0.5em;
 }

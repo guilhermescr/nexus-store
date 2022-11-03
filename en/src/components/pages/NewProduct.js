@@ -21,11 +21,15 @@ function NewProduct({ setProducts, products }) {
       'Save Product'
     ) {
       const urlID = window.location.search.replace('?id=', '');
-      const updatedProducts = products.filter(
-        $product => !($product.id === urlID)
-      );
+      const updatedProducts = products.map($product => {
+        if ($product.id === urlID) {
+          return { ...product };
+        } else {
+          return $product;
+        }
+      });
 
-      setProducts([...updatedProducts, product]);
+      setProducts([...updatedProducts]);
       console.log(product);
     } else {
       product.id = uuidv4();

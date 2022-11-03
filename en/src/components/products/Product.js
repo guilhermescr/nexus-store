@@ -1,7 +1,7 @@
 import styles from './Product.module.css';
 
 import { AiOutlineShoppingCart } from 'react-icons/ai';
-import { GrEdit } from 'react-icons/gr';
+import { GrEdit, GrTrash } from 'react-icons/gr';
 
 function Product({
   productName,
@@ -15,15 +15,24 @@ function Product({
   imgSrc,
   imgAltText,
   id,
-  editProduct
+  editProduct,
+  deleteProduct
 }) {
   return (
     <div className={styles.product} id={id}>
-      <div
-        className={styles.edit_product_container}
-        onClick={event => editProduct(event)}
-      >
-        <GrEdit />
+      <div className={styles.product_settings}>
+        <div
+          className={styles.edit_product_container}
+          onClick={event => editProduct(event)}
+        >
+          <GrEdit />
+        </div>
+        <div
+          className={styles.delete_product_container}
+          onClick={event => deleteProduct(event)}
+        >
+          <GrTrash />
+        </div>
       </div>
 
       <div className={styles.product_image_container}>

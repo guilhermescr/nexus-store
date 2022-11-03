@@ -6,11 +6,11 @@ import { setImageTypeState } from '../form/RadioInputs';
 
 export let currentProduct;
 
-function ProductsData({ products }) {
+function ProductsData({ products, setProducts }) {
   const navigate = useNavigate();
 
   function editProduct(event) {
-    let productContainer = event.currentTarget.parentElement;
+    let productContainer = event.currentTarget.parentElement.parentElement;
 
     currentProduct = products.find(
       $product => $product.id === productContainer.id
@@ -33,12 +33,12 @@ function ProductsData({ products }) {
             if (
               productInfo === 'imgSrc' &&
               (currentProduct[productInfo].includes('http') ||
-              currentProduct[productInfo].includes('jpg') ||
-              currentProduct[productInfo].includes('jpeg') ||
-              currentProduct[productInfo].includes('png') ||
-              currentProduct[productInfo].includes('webp') ||
-              currentProduct[productInfo].includes('gif') ||
-              currentProduct[productInfo].includes('avif'))
+                currentProduct[productInfo].includes('jpg') ||
+                currentProduct[productInfo].includes('jpeg') ||
+                currentProduct[productInfo].includes('png') ||
+                currentProduct[productInfo].includes('webp') ||
+                currentProduct[productInfo].includes('gif') ||
+                currentProduct[productInfo].includes('avif'))
             ) {
               setImageTypeState({ target: 'Image Link' });
 
@@ -51,11 +51,25 @@ function ProductsData({ products }) {
 
             if (document.querySelector('#description')) {
               document.querySelector('#description').value =
-              currentProduct.description;
+                currentProduct.description;
             }
           });
         });
       }, 150);
+    }
+  }
+
+  function deleteProduct({ currentTarget }) {
+    const productToBeDeleted = currentTarget.parentElement.parentElement;
+
+    const updatedProducts = products.filter(
+      $product => $product.id !== productToBeDeleted.id
+    );
+    if (updatedProducts.length > 0) {
+      setProducts(updatedProducts);
+    } else {
+      localStorage.removeItem('products');
+      setProducts([]);
     }
   }
 
@@ -81,6 +95,7 @@ function ProductsData({ products }) {
             key={product.id ? product.id : Math.random() * 10000}
             id={product.id}
             editProduct={editProduct}
+            deleteProduct={deleteProduct}
           />
         ))}
     </div>
