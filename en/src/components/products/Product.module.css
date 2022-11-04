@@ -66,7 +66,17 @@
   padding-inline: 0.4em;
 }
 
-.product h3 {
+.product_info > a {
+  background-color: transparent;
+  margin: 0;
+  padding: 0;
+}
+
+.product_info > a:hover {
+  text-decoration: underline #000;
+}
+
+.product #product_name {
   color: #122;
 }
 

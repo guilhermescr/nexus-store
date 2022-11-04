@@ -1,0 +1,136 @@
+.product_info_container {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.product_image_container {
+  align-items: center;
+  background-color: #fff;
+  display: flex;
+  max-width: 22em;
+  padding: 0.5em;
+  width: 100%;
+}
+
+.product_image_container img {
+  width: 100%;
+}
+
+.red_price {
+  color: #d00;
+  font-weight: 500;
+}
+
+.obsolete_price {
+  text-decoration: line-through;
+}
+
+.product_info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  height: 100%;
+  padding-inline: 0.4em;
+}
+
+.product_content {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.product_content h1 {
+  font-size: 1.5em;
+  width: 100%;
+}
+
+.product_content h1 + div {
+  display: flex;
+}
+
+.brand_and_rating_container {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.brand_and_rating_container p {
+  font-weight: 500;
+}
+
+.brand_and_rating_container p #brandName {
+  font-weight: normal;
+}
+
+.brand_and_rating_container .rating_container {
+  align-items: center;
+  display: flex;
+  gap: 0.2em;
+}
+
+.brand_and_rating_container .rating_container svg {
+  height: 1.4em;
+  width: 1.4em;
+}
+
+.brand_and_rating_container .rating_container #ratingAmount {
+  font-size: 1.2em;
+}
+
+.product_stock {
+  border-block: 1px solid #888;
+}
+
+.product_stock p {
+  color: #1c7904;
+  font-weight: bold;
+  padding-block: 1em;
+  text-transform: uppercase;
+}
+
+.product_payment {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6em;
+}
+
+.in_cash_payment > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+.product_incash {
+  color: #25b302;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4em;
+}
+
+.product_incash .incash_price {
+  font-size: 1.65em;
+  font-weight: 500;
+}
+
+.product_credit_card .product_credit_card_price {
+  display: block;
+  font-size: 1.3em;
+}
+
+.product_credit_card_installment strong {
+  display: block;
+  margin-top: 0.4em;
+}
+
+@media (min-width: 520px) {
+}
+
+@media (min-width: 720px) {
+  .product_info_container {
+    flex-direction: row;
+    margin: 0 auto;
+  }
+}

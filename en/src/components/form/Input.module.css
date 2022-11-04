@@ -23,9 +23,6 @@
   outline: 1px solid #444;
 }
 
-/* .form_input_container input[type='file'] {
-} */
-
 .form_input_container input::placeholder {
   color: #7b7b7b;
 }

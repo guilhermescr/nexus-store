@@ -13,7 +13,11 @@ function Input({ type, text, name, dataType, placeholder, handleOnChange }) {
         onChange={handleOnChange}
         accept="image/*"
         autoComplete="off"
-        required={(name === 'productName' || name === 'inCash_price' || name === 'imgSrc') ? 'required' : false}
+        required={
+          name === 'productName' || name === 'inCash_price' || name === 'imgSrc'
+            ? 'required'
+            : false
+        }
       />
     </div>
   );

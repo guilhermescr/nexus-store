@@ -6,7 +6,7 @@ import styles from './LinkButton.module.css';
 function LinkButton({ to, text }) {
   return (
     <Link className={styles.btn} to={to}>
-      {text} {text.includes('Add') && <AiOutlinePlus />}
+      {text} {typeof text === 'string' && text.includes('Add') && <AiOutlinePlus />}
     </Link>
   );
 }

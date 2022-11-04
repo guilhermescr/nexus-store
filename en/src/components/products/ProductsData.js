@@ -9,6 +9,10 @@ export let currentProduct;
 function ProductsData({ products, setProducts }) {
   const navigate = useNavigate();
 
+  function saveCurrentProduct(productId) {
+    currentProduct = products.find($product => $product.id === productId);
+  }
+
   function editProduct(event) {
     let productContainer = event.currentTarget.parentElement.parentElement;
 
@@ -83,6 +87,7 @@ function ProductsData({ products, setProducts }) {
         products.map(product => (
           <Product
             productName={product.productName}
+            brand={product.brand}
             old_price={product.old_price}
             inCash_price={product.inCash_price}
             discount={product.discount}
@@ -94,6 +99,7 @@ function ProductsData({ products, setProducts }) {
             imgAltText={product.imgAltText}
             key={product.id ? product.id : Math.random() * 10000}
             id={product.id}
+            saveCurrentProduct={saveCurrentProduct}
             editProduct={editProduct}
             deleteProduct={deleteProduct}
           />

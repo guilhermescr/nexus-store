@@ -2,9 +2,11 @@ import styles from './Product.module.css';
 
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { GrEdit, GrTrash } from 'react-icons/gr';
+import LinkButton from '../layouts/LinkButton';
 
 function Product({
   productName,
+  brand,
   old_price,
   inCash_price,
   discount,
@@ -15,6 +17,7 @@ function Product({
   imgSrc,
   imgAltText,
   id,
+  saveCurrentProduct,
   editProduct,
   deleteProduct
 }) {
@@ -39,7 +42,12 @@ function Product({
         <img className={styles.product_image} src={imgSrc} alt={imgAltText} />
       </div>
       <div className={styles.product_info}>
-        <h3>{productName}</h3>
+        <LinkButton
+          to={`/product/${id}`}
+          text={
+            <h3 id={styles.product_name} onClick={() => saveCurrentProduct(id)}>{`${productName}`}</h3>
+          }
+        ></LinkButton>
         {old_price && (
           <p className={`${styles.product_old_price} ${styles.red_price}`}>
             from <span className={styles.obsolete_price}>${old_price}</span> to:

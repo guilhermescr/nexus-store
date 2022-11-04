@@ -4,10 +4,10 @@
   border: none;
   color: #77ffab;
   display: flex;
+  flex-wrap: wrap;
   gap: 5px;
   margin-left: auto;
   padding: 7px 10px;
-  width: max-content;
 }
 
 .btn:active {

@@ -1,0 +1,87 @@
+.shipping {
+  background-color: #fff;
+  border: 1px solid #02381a;
+  border-radius: 0.2em;
+  display: flex;
+  flex-direction: column;
+  font-size: 1.2em;
+  gap: 0.4em;
+  justify-content: space-between;
+  margin-block: 1em;
+  padding: 0.7em 0.6em;
+}
+
+.shipping label {
+  font-weight: 500;
+}
+
+.shipping p {
+  align-items: center;
+  display: flex;
+  font-size: 0.8em;
+  gap: 0.4em;
+  margin-bottom: 0.3em;
+}
+
+.shipping p svg {
+  font-size: 1.3em;
+}
+
+.shipping input {
+  border: 1px solid #aaa;
+  border-radius: 0;
+  max-width: 600px;
+  padding: 11px;
+  width: 100%;
+}
+
+.shipping input:focus {
+  border: none;
+  transition: transform 0.1s ease-out;
+  transform: scale(1.01);
+  outline: 1px solid #444;
+}
+
+.shipping input::placeholder {
+  color: #7b7b7b;
+}
+
+.shipping #results {
+  margin-top: 0.3em;
+}
+
+.shipping #results h2 {
+  font-size: 0.9em;
+}
+
+.shipping #results h2 span {
+  font-weight: normal;
+}
+
+.shipping button {
+  background-color: #76fcb9;
+  border: 1px solid #888;
+  color: #02381a;
+  cursor: pointer;
+  font-weight: bold;
+  padding-block: 1em;
+  text-transform: uppercase;
+  transition: 0.2s ease;
+}
+
+.shipping button:hover {
+  background-color: #02381a;
+  color: #fff;
+}
+
+.shipping button:active {
+  opacity: 0.8;
+}
+
+.alertColor {
+  color: #d00;
+}
+
+.hide {
+  display: none !important;
+}

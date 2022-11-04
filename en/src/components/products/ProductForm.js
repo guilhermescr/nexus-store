@@ -66,6 +66,13 @@ function ProductForm({ handleOnSubmit }) {
         placeholder="Insert a name..."
         handleOnChange={handleChange}
       />
+      <Input
+        type="text"
+        text="Brand"
+        name="brand"
+        placeholder="Insert a brand..."
+        handleOnChange={handleChange}
+      />
       <Textarea
         name="description"
         text="Description (Optional)"

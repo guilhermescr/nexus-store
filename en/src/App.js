@@ -9,6 +9,8 @@ import Home from './components/pages/Home';
 import NewProduct from './components/pages/NewProduct';
 import Products from './components/pages/Products';
 import AboutUs from './components/pages/AboutUs';
+import ExpandedProduct from './components/pages/ExpandedProduct';
+import NotFound from './components/NotFound';
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -38,6 +40,7 @@ function App() {
               <Home productsState={products} setProductsState={setProducts} />
             }
           />
+          <Route path="*" element={<NotFound />} />
           <Route
             path="/newproduct"
             element={
@@ -52,6 +55,10 @@ function App() {
                 setProductsState={setProducts}
               />
             }
+          />
+          <Route
+            path="/product/:productId"
+            element={<ExpandedProduct products={products} />}
           />
           <Route path="/cart" element={<Cart />} />
           <Route path="/aboutus" element={<AboutUs />} />
