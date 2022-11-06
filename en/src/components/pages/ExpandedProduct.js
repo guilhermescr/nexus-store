@@ -16,7 +16,44 @@ function ExpandedProduct({ products }) {
     );
 
     setProduct(productData);
-  }, [setProduct]);
+  }, [setProduct, url_location]);
+
+  function paintStars(starsAmount, clear) {
+    const stars = document.querySelectorAll('.star');
+    const starColor = clear ? '' : '#FDCC0D';
+
+    for (let star = 0; star < starsAmount; star++) {
+      stars[star].style.color = starColor;
+    }
+  }
+
+  function hoverStar({ target }) {
+    if (target.id) {
+      const starId = ['star_1', 'star_2', 'star_3', 'star_4', 'star_5'].find(
+        star => star === target.id
+      );
+
+      switch (starId) {
+        case 'star_1':
+          paintStars(1);
+          break;
+        case 'star_2':
+          paintStars(2);
+          break;
+        case 'star_3':
+          paintStars(3);
+          break;
+        case 'star_4':
+          paintStars(4);
+          break;
+        case 'star_5':
+          paintStars(5);
+          break;
+        default:
+          console.log('nothing here...');
+      }
+    }
+  }
 
   return (
     <div>
@@ -38,8 +75,37 @@ function ExpandedProduct({ products }) {
               </p>
 
               <div className={styles.rating_container}>
-                <AiFillStar /> <AiFillStar /> <AiFillStar /> <AiFillStar />{' '}
-                <AiFillStar /> <span id={styles.ratingAmount}>(0)</span>
+                <AiFillStar
+                  className="star"
+                  id="star_1"
+                  onMouseOver={event => hoverStar(event)}
+                  onMouseLeave={event => paintStars(5, true)}
+                />
+                <AiFillStar
+                  className="star"
+                  id="star_2"
+                  onMouseOver={event => hoverStar(event)}
+                  onMouseLeave={event => paintStars(5, true)}
+                />
+                <AiFillStar
+                  className="star"
+                  id="star_3"
+                  onMouseOver={event => hoverStar(event)}
+                  onMouseLeave={event => paintStars(5, true)}
+                />
+                <AiFillStar
+                  className="star"
+                  id="star_4"
+                  onMouseOver={event => hoverStar(event)}
+                  onMouseLeave={event => paintStars(5, true)}
+                />
+                <AiFillStar
+                  className="star"
+                  id="star_5"
+                  onMouseOver={event => hoverStar(event)}
+                  onMouseLeave={event => paintStars(5, true)}
+                />
+                <span id={styles.ratingAmount}>(0)</span>
               </div>
             </div>
 
