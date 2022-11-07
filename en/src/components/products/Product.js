@@ -6,7 +6,6 @@ import LinkButton from '../layouts/LinkButton';
 
 function Product({
   productName,
-  brand,
   old_price,
   inCash_price,
   discount,

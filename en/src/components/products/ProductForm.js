@@ -19,7 +19,10 @@ function ProductForm({ handleOnSubmit }) {
   function handleChange({ target }) {
     if (target.name === 'imgLink') {
       setProduct({ ...product, imgSrc: target.value });
-    } else if (target.name === 'imgFile') {
+      return;
+    }
+
+    if (target.name === 'imgFile') {
       const reader = new FileReader();
       let img;
 
@@ -29,28 +32,21 @@ function ProductForm({ handleOnSubmit }) {
       });
 
       reader.readAsDataURL(target.files[0]);
-
-      /* another way
-
-        let img = event.target.files[0];
-        img = URL.createObjectURL(img);
-        console.log(img);
-
-        setProduct({ ...product, [event.target.name]: img });
-      */
-    } else {
-      if (target.className === 'priceData') {
-        let regex = /[0-9][.|,]?/gi;
-
-        if (!regex.test(target.value)) {
-          console.log('not a match');
-          // show an error message to the user
-        }
-        setProduct({ ...product, [target.name]: Number(target.value) });
-      } else {
-        setProduct({ ...product, [target.name]: target.value });
-      }
+      return;
     }
+
+    if (target.className === 'numberData') {
+      let regex = /[0-9][.|,]?/gi;
+
+      if (!regex.test(target.value)) {
+        console.log('not a match');
+        // show an error message to the user
+      }
+      setProduct({ ...product, [target.name]: Number(target.value) });
+      return;
+    }
+
+    setProduct({ ...product, [target.name]: target.value });
   }
 
   return (
@@ -80,10 +76,18 @@ function ProductForm({ handleOnSubmit }) {
         handleOnChange={handleChange}
       />
       <Input
+        type="number"
+        text="Amount in Stock"
+        name="amountInStock"
+        dataType="numberData"
+        placeholder="Insert an amount..."
+        handleOnChange={handleChange}
+      />
+      <Input
         type="text"
         text="Old Price"
         name="old_price"
-        dataType="priceData"
+        dataType="numberData"
         placeholder="R$0.00"
         handleOnChange={handleChange}
       />
@@ -91,7 +95,7 @@ function ProductForm({ handleOnSubmit }) {
         type="text"
         text="In Cash Price"
         name="inCash_price"
-        dataType="priceData"
+        dataType="numberData"
         placeholder="R$0.00"
         handleOnChange={handleChange}
       />
@@ -99,7 +103,7 @@ function ProductForm({ handleOnSubmit }) {
         type="number"
         text="Discount"
         name="discount"
-        dataType="priceData"
+        dataType="numberData"
         placeholder="0%"
         handleOnChange={handleChange}
       />
@@ -107,7 +111,7 @@ function ProductForm({ handleOnSubmit }) {
         type="text"
         text="Credit Card Price"
         name="creditCard_price"
-        dataType="priceData"
+        dataType="numberData"
         placeholder="R$0.00"
         handleOnChange={handleChange}
       />
@@ -115,7 +119,7 @@ function ProductForm({ handleOnSubmit }) {
         type="number"
         text="Credit Card Installment"
         name="creditCard_installment"
-        dataType="priceData"
+        dataType="numberData"
         placeholder="0"
         handleOnChange={handleChange}
       />
@@ -123,7 +127,7 @@ function ProductForm({ handleOnSubmit }) {
         type="text"
         text="Credit Card Installment Price"
         name="creditCard_installment_price"
-        dataType="priceData"
+        dataType="numberData"
         placeholder="R$0.00"
         handleOnChange={handleChange}
       />
@@ -131,7 +135,7 @@ function ProductForm({ handleOnSubmit }) {
         type="number"
         text="Credit Card Fees"
         name="creditCard_fees"
-        dataType="priceData"
+        dataType="numberData"
         placeholder="0%"
         handleOnChange={handleChange}
       />

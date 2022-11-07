@@ -8,6 +8,7 @@
   align-items: center;
   background-color: #fff;
   display: flex;
+  margin: 0 auto;
   max-width: 22em;
   padding: 0.5em;
   width: 100%;
@@ -124,6 +125,51 @@
 .product_credit_card_installment strong {
   display: block;
   margin-top: 0.4em;
+}
+
+.purchase_buttons {
+  align-items: center;
+  display: flex;
+  gap: 1em;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.purchase_buttons button {
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding-block: 1em;
+  width: 50%;
+}
+
+.purchase_buttons button:hover {
+  opacity: 0.9;
+}
+
+.purchase_buttons button:active {
+  opacity: 0.85;
+}
+
+.purchase_buttons button svg {
+  height: 1.3em;
+  width: 1.3em;
+}
+
+.purchase_buttons button:nth-child(1) {
+  align-items: center;
+  background-color: #222;
+  color: #76fcb9;
+  display: flex;
+  gap: 0.5em;
+  justify-content: center;
+}
+
+.purchase_buttons button:nth-child(2) {
+  background-color: #76fcb9;
+  border: 1px solid #222222aa;
+  color: #222;
+  font-weight: 500;
 }
 
 @media (min-width: 520px) {

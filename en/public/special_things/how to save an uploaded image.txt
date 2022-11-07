@@ -1,0 +1,19 @@
+First Way:
+
+const reader = new FileReader();
+let img;
+
+reader.addEventListener('load', () => {
+  img = reader.result;
+  setProduct({ ...product, imgSrc: img });
+});
+
+reader.readAsDataURL(target.files[0]);
+
+---------------------------------------------------------
+
+Second Way:
+
+let img = event.target.files[0];
+img = URL.createObjectURL(img);
+setProduct({ ...product, [event.target.name]: img });

@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { AiFillStar } from 'react-icons/ai';
+import { AiFillStar, AiOutlineShoppingCart } from 'react-icons/ai';
 import styles from './ExpandedProduct.module.css';
 import ShippingInput from '../shipping/ShippingInput';
+import ProductQuantity from '../products/ProductQuantity';
 
 function ExpandedProduct({ products }) {
   const [product, setProduct] = useState({});
@@ -112,6 +113,8 @@ function ExpandedProduct({ products }) {
             <div className={styles.product_stock}>
               <p>Product Available</p>
             </div>
+
+            <ProductQuantity amount={product.amountInStock} />
           </div>
 
           <div className={styles.product_payment}>
@@ -172,6 +175,13 @@ function ExpandedProduct({ products }) {
           </div>
 
           <ShippingInput />
+
+          <div className={styles.purchase_buttons}>
+            <button>
+              Add to Cart <AiOutlineShoppingCart />
+            </button>
+            <button>Buy Now</button>
+          </div>
         </section>
       </section>
     </div>

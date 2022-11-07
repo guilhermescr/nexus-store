@@ -87,7 +87,6 @@ function ProductsData({ products, setProducts }) {
         products.map(product => (
           <Product
             productName={product.productName}
-            brand={product.brand}
             old_price={product.old_price}
             inCash_price={product.inCash_price}
             discount={product.discount}
