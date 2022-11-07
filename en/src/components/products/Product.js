@@ -3,6 +3,7 @@ import styles from './Product.module.css';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { GrEdit, GrTrash } from 'react-icons/gr';
 import LinkButton from '../layouts/LinkButton';
+import { useEffect, useState } from 'react';
 
 function Product({
   productName,
@@ -18,8 +19,29 @@ function Product({
   id,
   saveCurrentProduct,
   editProduct,
-  deleteProduct
+  deleteProduct,
+  productsInCart,
+  setProductsInCart
 }) {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const data = localStorage.getItem('products');
+
+    if (data !== null) {
+      setProducts(JSON.parse(data));
+    }
+  }, [setProducts]);
+
+  function addProductToCart() {
+    const product = products.find($product => $product.id === id);
+    if (
+      !productsInCart.some(productInCart => productInCart.id === product.id)
+    ) {
+      setProductsInCart([...productsInCart, product]);
+    }
+  }
+
   return (
     <div className={styles.product} id={id}>
       <div className={styles.product_settings}>
@@ -44,7 +66,10 @@ function Product({
         <LinkButton
           to={`/product/${id}`}
           text={
-            <h3 id={styles.product_name} onClick={() => saveCurrentProduct(id)}>{`${productName}`}</h3>
+            <h3
+              id={styles.product_name}
+              onClick={() => saveCurrentProduct(id)}
+            >{`${productName}`}</h3>
           }
         ></LinkButton>
         {old_price && (
@@ -55,9 +80,11 @@ function Product({
         <p className={styles.product_incash}>
           in cash <span className={styles.incash_price}>${inCash_price}</span>
         </p>
-        {discount && (
-          <p className={styles.product_discount}>with a {discount}% discount</p>
-        )}
+        <p className={styles.product_discount}>
+          {discount !== 0
+            ? `with a ${discount}% discount`
+            : 'without discounts'}
+        </p>
 
         <span className={styles.horizontal_row}></span>
 
@@ -88,7 +115,11 @@ function Product({
         )}
       </div>
 
-      <button className={styles.addToCartBtn} type="button">
+      <button
+        className={styles.addToCartBtn}
+        type="button"
+        onClick={addProductToCart}
+      >
         Add to Cart <AiOutlineShoppingCart />
       </button>
     </div>

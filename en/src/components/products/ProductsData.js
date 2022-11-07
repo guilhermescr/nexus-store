@@ -6,7 +6,12 @@ import { setImageTypeState } from '../form/RadioInputs';
 
 export let currentProduct;
 
-function ProductsData({ products, setProducts }) {
+function ProductsData({
+  products,
+  setProducts,
+  productsInCart,
+  setProductsInCart
+}) {
   const navigate = useNavigate();
 
   function saveCurrentProduct(productId) {
@@ -101,6 +106,8 @@ function ProductsData({ products, setProducts }) {
             saveCurrentProduct={saveCurrentProduct}
             editProduct={editProduct}
             deleteProduct={deleteProduct}
+            productsInCart={productsInCart}
+            setProductsInCart={setProductsInCart}
           />
         ))}
     </div>

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-import Cart from './components/cart/Cart';
+import Cart from './components/pages/Cart';
 import Container from './components/layouts/Container';
 import Header from './components/layouts/Header';
 import Footer from './components/layouts/Footer';
@@ -14,6 +14,7 @@ import NotFound from './components/NotFound';
 
 function App() {
   const [products, setProducts] = useState([]);
+  const [productsInCart, setProductsInCart] = useState([]);
 
   useEffect(() => {
     const data = localStorage.getItem('products');
@@ -37,7 +38,12 @@ function App() {
           <Route
             path="/"
             element={
-              <Home productsState={products} setProductsState={setProducts} />
+              <Home
+                productsState={products}
+                setProductsState={setProducts}
+                productsInCart={productsInCart}
+                setProductsInCart={setProductsInCart}
+              />
             }
           />
           <Route path="*" element={<NotFound />} />
@@ -53,6 +59,8 @@ function App() {
               <Products
                 productsState={products}
                 setProductsState={setProducts}
+                productsInCart={productsInCart}
+                setProductsInCart={setProductsInCart}
               />
             }
           />
@@ -60,7 +68,15 @@ function App() {
             path="/product/:productId"
             element={<ExpandedProduct products={products} />}
           />
-          <Route path="/cart" element={<Cart />} />
+          <Route
+            path="/cart"
+            element={
+              <Cart
+                productsInCart={productsInCart}
+                setProductsInCart={setProductsInCart}
+              />
+            }
+          />
           <Route path="/aboutus" element={<AboutUs />} />
         </Routes>
       </Container>

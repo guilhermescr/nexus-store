@@ -138,11 +138,11 @@ function ExpandedProduct({ products }) {
                     ${product.inCash_price}
                   </span>
                 </p>
-                {product.discount && (
-                  <p className={styles.product_discount}>
-                    with a {product.discount}% discount
-                  </p>
-                )}
+                <p className={styles.product_discount}>
+                  {product.discount !== 0
+                    ? `with a ${product.discount}% discount`
+                    : 'without discounts'}
+                </p>
               </div>
             </div>
             <div className={styles.credit_card_payment}>

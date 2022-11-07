@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { AiFillCloseCircle } from 'react-icons/ai';
 
 import styles from './Message.module.css';
 
@@ -23,7 +24,13 @@ function Message({ type, msg }) {
   return (
     <>
       {visible && (
-        <div className={`${styles.message} ${styles[type]}`}>{msg}</div>
+        <div
+          className={`${styles.message} ${styles[type]}`}
+          onClick={() => setVisible(false)}
+        >
+          {msg}
+          <AiFillCloseCircle />
+        </div>
       )}
     </>
   );
