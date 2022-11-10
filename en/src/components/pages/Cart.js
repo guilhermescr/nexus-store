@@ -46,22 +46,23 @@ function Cart({ productsInCart, setProductsInCart }) {
 
   return (
     <div>
-      <h1>Cart</h1>
-      <div>
-        <h2>Shopping Cart</h2>
-        <table className={styles.shopping_cart_table}>
-          <thead>
-            <tr>
-              <th>Remove Item</th>
-              <th>Product Image</th>
-              <th>Product</th>
-              <th>Price</th>
-              <th>Quantity</th>
-              <th>Subtotal</th>
-            </tr>
-          </thead>
-          <tbody>{renderProductsInCart()}</tbody>
-        </table>
+      <div id={styles.wrapper}>
+        <h1>Shopping Cart</h1>
+        <div id={styles.shopping_cart_container}>
+          <table className={styles.shopping_cart_table}>
+            <thead>
+              <tr>
+                <th>Remove Item</th>
+                <th>Product Image</th>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Subtotal</th>
+              </tr>
+            </thead>
+            <tbody>{renderProductsInCart()}</tbody>
+          </table>
+        </div>
       </div>
     </div>
   );
