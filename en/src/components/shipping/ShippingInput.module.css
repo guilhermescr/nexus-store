@@ -8,7 +8,9 @@
   gap: 0.4em;
   justify-content: space-between;
   margin-block: 1em;
+  max-width: 20em;
   padding: 0.7em 0.6em;
+  width: 100%;
 }
 
 .shipping label {
@@ -30,7 +32,6 @@
 .shipping input {
   border: 1px solid #aaa;
   border-radius: 0;
-  max-width: 600px;
   padding: 11px;
   width: 100%;
 }

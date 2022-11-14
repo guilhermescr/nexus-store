@@ -5,29 +5,46 @@ import styles from './Cart.module.css';
 
 function Cart({ productsInCart, setProductsInCart }) {
   const [productsSubtotal, setProductsSubtotal] = useState([]);
+  const [productQuantity, setProductQuantity] = useState(productsInCart.length);
 
   useEffect(() => {
-    console.log(productsInCart);
-
     productsInCart.forEach(productInCart => {
       setProductsSubtotal([...productsSubtotal, productInCart.inCash_price]);
     });
   }, [setProductsSubtotal]);
 
+  function handleChange(event, productInCart) {
+    if (event.target.value < 1 && event.target.value.length > 0) {
+      event.target.value = 1;
+      setProductQuantity(1);
+      return;
+    }
+
+    if (event.target.value > productInCart.amountInStock) {
+      event.target.value = productInCart.amountInStock;
+      setProductQuantity(productInCart.amountInStock);
+      return;
+    }
+
+    setProductQuantity(event.target.value);
+  }
+
+  function removeProductFromCart(productInCart) {
+    const updatedCart = productsInCart.filter(
+      $productInCart => $productInCart.id !== productInCart.id
+    );
+    setProductsInCart(updatedCart);
+
+    localStorage.setItem('productsInCart', JSON.stringify(updatedCart));
+  }
+
   function renderProductsInCart() {
-    // come back
     return productsInCart.map(productInCart => {
       return (
         <tr key={productInCart.id}>
           <td className={styles.remove_product_from_cart}>
             <AiOutlineClose
-              onClick={() =>
-                setProductsInCart(
-                  productsInCart.filter(
-                    $productInCart => $productInCart.id !== productInCart.id
-                  )
-                )
-              }
+              onClick={() => removeProductFromCart(productInCart)}
             />
           </td>
           <td>
@@ -36,9 +53,14 @@ function Cart({ productsInCart, setProductsInCart }) {
           <td className={styles.product_name}>{productInCart.productName}</td>
           <td>{productInCart.inCash_price}</td>
           <td className={styles.product_quantity}>
-            <input type="number" name="productQuantity" />
+            <input
+              type="number"
+              name="productQuantity"
+              onChange={event => handleChange(event, productInCart)}
+              value={productQuantity === 0 ? 1 : productQuantity}
+            />
           </td>
-          <td>{productsSubtotal}</td>
+          <td>{productInCart.inCash_price * productQuantity}</td>
         </tr>
       );
     });

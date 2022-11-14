@@ -17,18 +17,31 @@ function App() {
   const [productsInCart, setProductsInCart] = useState([]);
 
   useEffect(() => {
-    const data = localStorage.getItem('products');
+    const productsData = localStorage.getItem('products');
+    const productsInCartData = localStorage.getItem('productsInCart');
 
-    if (data !== null) {
-      setProducts(JSON.parse(data));
+    if (productsData !== null) {
+      setProducts(JSON.parse(productsData));
     }
-  }, [setProducts]);
+
+    if (productsInCartData !== null) {
+      setProductsInCart(JSON.parse(productsInCartData));
+    }
+  }, [setProducts, setProductsInCart]);
 
   useEffect(() => {
     if (products.length > 0) {
       localStorage.setItem('products', JSON.stringify(products));
+    } else {
+      localStorage.removeItem('products');
     }
-  }, [products]);
+
+    if (productsInCart.length > 0) {
+      localStorage.setItem('productsInCart', JSON.stringify(productsInCart));
+    } else {
+      localStorage.removeItem('productsInCart');
+    }
+  }, [products, productsInCart]);
 
   return (
     <Router>
