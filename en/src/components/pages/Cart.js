@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { AiOutlineClose } from 'react-icons/ai';
+import LinkButton from '../layouts/LinkButton';
 
 import styles from './Cart.module.css';
 
@@ -12,6 +13,12 @@ function Cart({ productsInCart, setProductsInCart }) {
       setProductsSubtotal([...productsSubtotal, productInCart.inCash_price]);
     });
   }, [setProductsSubtotal]);
+
+  function handleFocusOut(event) {
+    if (event.target.value.length === 0) {
+      event.target.value = 1;
+    }
+  }
 
   function handleChange(event, productInCart) {
     if (event.target.value < 1 && event.target.value.length > 0) {
@@ -50,7 +57,13 @@ function Cart({ productsInCart, setProductsInCart }) {
           <td>
             <img src={productInCart.imgSrc} alt={productInCart.imgAltText} />
           </td>
-          <td className={styles.product_name}>{productInCart.productName}</td>
+          <td className={styles.product_name}>
+            <LinkButton
+              to={`/product/${productInCart.id}`}
+              text={productInCart.productName}
+              optionalClass={styles.product_link}
+            ></LinkButton>
+          </td>
           <td>{productInCart.inCash_price}</td>
           <td className={styles.product_quantity}>
             <input
@@ -58,6 +71,7 @@ function Cart({ productsInCart, setProductsInCart }) {
               name="productQuantity"
               onChange={event => handleChange(event, productInCart)}
               value={productQuantity === 0 ? 1 : productQuantity}
+              onBlur={e => handleFocusOut(e)}
             />
           </td>
           <td>{productInCart.inCash_price * productQuantity}</td>

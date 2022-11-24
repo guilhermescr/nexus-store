@@ -52,6 +52,14 @@
   width: 1.2em;
 }
 
+.product_link {
+  color: #000;
+}
+
+.product_link:hover {
+  text-decoration: underline;
+}
+
 .product_quantity input {
   height: 3em;
   text-align: center;

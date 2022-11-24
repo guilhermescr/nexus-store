@@ -79,7 +79,13 @@ function App() {
           />
           <Route
             path="/product/:productId"
-            element={<ExpandedProduct products={products} />}
+            element={
+              <ExpandedProduct
+                products={products}
+                productsInCart={productsInCart}
+                setProductsInCart={setProductsInCart}
+              />
+            }
           />
           <Route
             path="/cart"

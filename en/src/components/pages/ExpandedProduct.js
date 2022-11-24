@@ -5,19 +5,30 @@ import styles from './ExpandedProduct.module.css';
 import ShippingInput from '../shipping/ShippingInput';
 import ProductQuantity from '../products/ProductQuantity';
 
-function ExpandedProduct({ products }) {
+function ExpandedProduct({ products, productsInCart, setProductsInCart }) {
   const [product, setProduct] = useState({});
   const url_location = useLocation();
 
   useEffect(() => {
     const data = localStorage.getItem('products');
-    const urlId = url_location.pathname.replace('/product/', '');
+    const urlId = url_location.pathname.replaceAll('/product/', '');
     const productData = JSON.parse(data).find(
       $product => $product.id === urlId
     );
 
     setProduct(productData);
   }, [setProduct, url_location]);
+
+  function addProductToCart() {
+    const urlId = url_location.pathname.replaceAll('/product/', '');
+
+    const product = products.find($product => $product.id === urlId);
+    if (
+      !productsInCart.some(productInCart => productInCart.id === product.id)
+    ) {
+      setProductsInCart([...productsInCart, product]);
+    }
+  }
 
   function paintStars(starsAmount, clear) {
     const stars = document.querySelectorAll('.star');
@@ -177,7 +188,7 @@ function ExpandedProduct({ products }) {
           <ShippingInput />
 
           <div className={styles.purchase_buttons}>
-            <button>
+            <button onClick={addProductToCart}>
               Add to Cart <AiOutlineShoppingCart />
             </button>
             <button>Buy Now</button>
